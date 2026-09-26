@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  fastapi-app:
+    build: .
+    container_name: ey_pdf_extractor_api
+    ports:
+      - "8000:8000"
+    environment:
+      - OLLAMA_URL=http://host.docker.internal:11434/api/generate
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: always
